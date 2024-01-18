@@ -1,0 +1,38 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+  background-color: cornsilk;
+}
+
+#emoticon {
+  text-align: center;
+  padding: 20px; /* Ajoute de l'espace autour de la section */
+}
+
+#emoticon h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+#emoticon a {
+  text-decoration: none;
+  color: #333; /* Couleur du texte */
+  margin: 10px; /* Espacement entre les icônes */
+  font-size: 1.5rem; /* Taille des icônes */
+  transition: color 0.2s; /* Animation de changement de couleur au survol */
+}
+
+#emoticon a:hover {
+  color: #b6b4fd; /* Couleur différente au survol */
+}
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: cornsilk;
+}
