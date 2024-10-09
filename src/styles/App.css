@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Courier+New:wght@400;600;600italic&display=swap');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+  background-color: #f5f5dc;
+}
+
+#emoticon {
+  text-align: center;
+  padding: 20px;
+}
+
+#emoticon h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #8b4513;
+}
+
+#emoticon a {
+  text-decoration: none;
+  color: #8b4513;
+  margin: 10px;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+
+#emoticon a:hover {
+  color: #a0522d;
+}
+
+.card {
+  padding: 2em;
+  background-color: #f5deb3;
+  border-radius: 8px;
+}
+
+.read-the-docs {
+  color: #8b4513;
+}
+
+.regular {
+  font-family: 'Courier New', monospace;
+  font-weight: 400;
+}
+
+.semi-bold {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.semi-bold-italic {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-style: italic;
+}

@@ -1,0 +1,50 @@
+.form-container {
+    width: 150%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -1rem;
+}
+  
+form {
+    margin-top: 3rem;
+}
+  
+.form-container input, .form-container textarea, .form-container button {
+    margin: 0 auto;
+    display: block;
+}
+  
+input, textarea {
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    padding: .7rem;
+    background-color: #ede7cf; /* Utiliser la quatrième couleur pour le fond */
+    color: #827055; /* Utiliser la première couleur pour le texte */
+}
+  
+textarea {
+    height: 120px;
+    resize: none;
+}
+  
+form button {
+    margin-top: 3rem;
+    width: 150px;
+    height: 2rem;
+    font-size: 1rem;
+    border: 1px solid #827055; /* Utiliser la première couleur pour la bordure */
+    border-radius: 5px;
+    color: #a79e8b; /* Utiliser la deuxième couleur pour le texte */
+    background-color: #d4ceb0; /* Utiliser la troisième couleur pour le fond */
+    -webkit-transition: background 320ms ease-in;
+    -moz-transition: background 320ms ease-in;
+    -ms-transition: background 320ms ease-in;
+    -o-transition: background 320ms ease-in;
+    transition: background 320ms ease-in;
+}
+  
+form button:hover {
+    background-color: #827055; /* Utiliser la première couleur pour le fond au survol */
+    color: #ede7cf; /* Utiliser la quatrième couleur pour le texte au survol */
+}
