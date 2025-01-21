@@ -6,6 +6,8 @@ const NavBar = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+
+    
   };
 
   return (
@@ -13,7 +15,7 @@ const NavBar = () => {
       <header className="header">
         <div className="logo">Logo '✖' </div>
         <button className="menu-btn" onClick={toggleMenu}>
-          <i class="fa-solid fa-bars"></i>
+          {isOpen ? 'Close' : 'Menu'}
         </button>
       </header>
 
