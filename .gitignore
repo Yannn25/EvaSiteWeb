@@ -5,3 +5,4 @@
 !important.tmp # sauf le fichier important.tmp, qui lui sera commité
 
 /node_modules # tout ce qui se trouve dans le dossier 'node_modules' sera ignoré
+.env
