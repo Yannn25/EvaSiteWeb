@@ -1,82 +1,286 @@
-/* Sidebar (navbar) initialement cachée */
-.menu-container {
-  position: fixed;
-  top: -100%; /* Cachée en dehors de la vue, au-dessus */
-  left: 0;
-  width: 100%; /* La navbar prend toute la largeur de l'écran */
-  height: 40%; /* La navbar occupe tout l'écran quand elle est visible */
-  background: #d4ceb0;
-  z-index: 1000;
-  transition: top 1.5s ease; /* Animation de descente */
-}
-
-/* Sidebar visible (déployée) */
-.menu-container.open {
-  top: 60px; /* Déplace la navbar à sa position visible */
-}
-
-
-/* Déplacer le contenu du site vers le bas lorsque le menu est ouvert */
-.site-container.menu-open {
-  padding-top: 480px; /* Ajustez cette valeur selon la hauteur de votre header */
-  transition: padding-top 1.5s ease;
-}
-
-
+/* Header fixe */
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 20px;
-  background: #f5f5dc;
+  right: 0;
+  padding: 20px 40px;
+  background: rgba(245, 245, 220, 0.95);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1001;
+  transition: all 0.3s ease;
 }
 
 .logo {
-  font-size: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #8b4513;
+  letter-spacing: -0.5px;
 }
 
+/* Bouton hamburger */
 .menu-btn {
   background: none;
   border: none;
-  color: #827055;
-  font-size: 24px;
   cursor: pointer;
+  padding: 10px;
+  z-index: 1002;
+  position: relative;
 }
 
-.center {
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #8b4513;
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 18px;
+}
+
+/* Animation du hamburger vers X */
+.hamburger.active span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
+  background: #f5f5dc;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.active span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+  background: #f5f5dc;
+}
+
+/* Overlay du menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow: hidden;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-content {
+  height: 100%;
   display: flex;
-  flex-direction: column; /* Aligne les éléments verticalement */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  padding: 80px 40px 40px;
+  position: relative;
 }
 
-.list-items {
-  list-style-type: none;
-  font-size: 20px;
-  font-weight: bold;
+/* Navigation principale */
+.main-nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-list {
+  list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
 }
 
-.list-items > li {
-  margin: 20px 0; /* Espace vertical entre les éléments */
+.nav-item {
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Liens de navigation */
-.list-items a {
+.menu-overlay.open .nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-overlay.open .nav-item:nth-child(1) { transition-delay: 0.1s; }
+.menu-overlay.open .nav-item:nth-child(2) { transition-delay: 0.2s; }
+.menu-overlay.open .nav-item:nth-child(3) { transition-delay: 0.3s; }
+
+.nav-link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  color: #827055;
-  padding: 15px 10px;
-  display: block;
+  color: #f5f5dc;
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  padding: 15px 0;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.list-items a:hover {
-  color: #ede7cf;
+.nav-link:hover {
+  color: #deb887;
+  transform: translateX(20px);
+}
+
+.nav-number {
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-right: 30px;
+  font-weight: 400;
+  min-width: 30px;
+}
+
+.nav-text {
+  position: relative;
+}
+
+.nav-text::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #deb887;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover .nav-text::after {
+  width: 100%;
+}
+
+/* Footer du menu */
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-top: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  transition-delay: 0.4s;
+}
+
+.menu-overlay.open .menu-footer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-footer h4 {
+  color: #f5f5dc;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  color: #f5f5dc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.social-link:hover {
+  opacity: 1;
+  color: #deb887;
+}
+
+.social-link i {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.contact-info {
+  text-align: right;
+}
+
+.contact-info p {
+  color: #f5f5dc;
+  margin: 5px 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+  
+  .nav-link {
+    font-size: 2.5rem;
+  }
+  
+  .menu-footer {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .contact-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    font-size: 2rem;
+  }
+  
+  .nav-number {
+    margin-right: 20px;
+  }
+  
+  .menu-content {
+    padding: 80px 20px 40px;
+  }
 }
