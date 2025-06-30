@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './NavBar'; // Assurez-vous que le chemin est correct
+import Navbar from './NavBar'; 
+import { Contact } from './Contact';
 
 export const Accueil = () => {
   return (
@@ -28,6 +29,7 @@ export const Accueil = () => {
             />
           </div>
         </div>
+        <Contact />
       </div>
     </div>
   );  
